@@ -1,0 +1,32 @@
+server:
+  port: 3344
+spring:
+  application:
+    name: springcloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wwg1025/springcloud-config-server.git
+          search-paths:
+            - springcloud-config-server #检索目录
+          username: 18500035373@163.com
+          password: WG180cm.
+      label: master #分支
+
+
+
+  #rabbitmq相关配置
+  rabbitmq:
+    host: 172.16.100.111
+    port: 5672 #15672是web管理界面的端口；5672是mq访问的端口
+    username: guest
+    password: guest
+
+
+#暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'

@@ -1,0 +1,25 @@
+server:
+  port: 3366
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master #分支名称
+      name: config #配置文件名称
+      profile: dev #环境名称 读取后缀名称
+      uri: http://localhost:3344 #配置中心地址
+
+  #rabbitmq相关配置
+  rabbitmq:
+    host: 172.16.100.111
+    port: 5672 #15672是rabbitmq web管理界面的端口；5672是mq访问的端口
+    username: guest
+    password: guest
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

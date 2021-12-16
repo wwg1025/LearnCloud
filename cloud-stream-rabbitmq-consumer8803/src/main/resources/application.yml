@@ -1,0 +1,42 @@
+server:
+  port: 8803
+spring:
+  application:
+    name: cloud-stream-consumer8803
+  rabbitmq:
+    host: 47.102.47.99
+    port: 5672
+    username: admin
+    password: admin
+
+
+  cloud:
+    stream:
+      binders: #在此处配置要绑定的rabbitmq服务信息
+        defaultRabbit: #标识定义的名称，用于binding整合
+          type: rabbit #消息组件类型
+          environment: #设置rabbitmq的相关环境配置
+            spring:
+              rabbitmq:
+                host: 47.102.47.99
+                port: 5672
+                username: admin
+                password: admin
+      bindings: #服务的整合处理
+        input: #这个名字是一个通道的名称（消费者通道）
+          destination: wwgExchange #标识要是用的exchange交换机名称定义
+          content-type: application/json #设置消息类型，本次为对象json，如果是文本册则设置"text/plain"
+          binder: defaultRabbit #设置要绑定的消息服务的具体设置
+          group: wenA #配置同一分组 避免重复消费问题（同一组存在竞争关系,竞争消费）
+
+eureka:
+  client: #客户端进行eureka注册的配置
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 2 #设置心跳的间隔时间（默认是30秒）
+    lease-expiration-duration-in-seconds: 5 #eureka服务端在收到最后一次心跳后等待时间上限，单位为秒（默认是90秒），超时将剔除服务
+    instance-id: receive-8803.com #在eureka注册中心主机列表显示的名称
+    prefer-ip-address: true #访问的路径变为ip地址
+
+
