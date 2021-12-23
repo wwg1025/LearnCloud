@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wen.springcloud.dao.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.wen.springcloud.domain.Account" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="total" property="total" jdbcType="DECIMAL" />
+    <result column="used" property="used" jdbcType="DECIMAL" />
+    <result column="residue" property="residue" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, total, used, residue
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_account
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_account
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wen.springcloud.domain.Account" >
+    insert into t_account (id, user_id, total, 
+      used, residue)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{total,jdbcType=DECIMAL}, 
+      #{used,jdbcType=DECIMAL}, #{residue,jdbcType=DECIMAL})
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wen.springcloud.domain.Account" >
+    update t_account
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="total != null" >
+        total = #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="used != null" >
+        used = #{used,jdbcType=DECIMAL},
+      </if>
+      <if test="residue != null" >
+        residue = #{residue,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="decrease">
+    UPDATE t_account
+    SET
+      residue = residue - #{money},used = used + #{money}
+    WHERE
+      user_id = #{userId}
+  </update>
+</mapper>
