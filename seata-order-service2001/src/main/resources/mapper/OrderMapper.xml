@@ -23,9 +23,9 @@
     where ID = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.wen.springcloud.domain.Order" >
-    insert into t_order (ID, USER_ID, PRODUCT_ID, 
+    insert into t_order (ID, USER_ID, PRODUCT_ID,
       COUNT, MONEY, STATUS)
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT},
       #{count,jdbcType=INTEGER}, #{money,jdbcType=DECIMAL}, #{status,jdbcType=CHAR})
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.wen.springcloud.domain.Order" >
