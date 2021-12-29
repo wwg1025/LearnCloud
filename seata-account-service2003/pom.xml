@@ -47,7 +47,7 @@
         </dependency>-->
         <!--seata-->
         <!--官方的说法是只需要依赖seata-spring-boot-starter即可,但是在实际的过程中,该依赖内部依然使用的是seata-all 0.9版本,会报错,因此我单独引入了seata-all 1.0.0-->
-        <dependency>
+        <!--<dependency>
             <groupId>io.seata</groupId>
             <artifactId>seata-spring-boot-starter</artifactId>
             <version>1.0.0</version>
@@ -62,6 +62,24 @@
             <groupId>io.seata</groupId>
             <artifactId>seata-all</artifactId>
             <version>1.0.0</version>
+        </dependency>-->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.seata</groupId>
+                    <artifactId>seata-spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
         </dependency>
 
         <!--feign-->
