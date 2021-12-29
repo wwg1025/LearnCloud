@@ -63,6 +63,7 @@
             <artifactId>seata-all</artifactId>
             <version>1.0.0</version>
         </dependency>-->
+        <!--seata START-->
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>seata-spring-boot-starter</artifactId>
@@ -81,7 +82,7 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
         </dependency>
-
+        <!--seata END-->
         <!--feign-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

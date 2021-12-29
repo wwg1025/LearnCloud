@@ -118,7 +118,7 @@
                 <version>${lombok.version}</version>
                 <optional>true</optional>
             </dependency>
-            <!--seata-->
+            <!--seata START-->
             <dependency>
                 <groupId>io.seata</groupId>
                 <artifactId>seata-spring-boot-starter</artifactId>
@@ -141,6 +141,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            <!--seata END-->
         </dependencies>
     </dependencyManagement>
 
