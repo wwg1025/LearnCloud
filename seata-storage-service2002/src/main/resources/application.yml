@@ -38,13 +38,17 @@ seata:
       nacos:
         application: seata-server  #nacos中seata-server启动注册成功后的服务名称
         server-addr: 127.0.0.1:8848
+        group: DEFAULT_GROUP
+        namespace: e039ecd9-d1bb-490b-bc32-e8a5459bd89c
+        cluster: default
         username: nacos
         password: nacos
     config: ## 配置中心  与register.conf文件中的保持一致
       type: nacos
       nacos:
         server-addr: 127.0.0.1:8848
-        application: DEFAULT_GROUP  #与register.conf文件中的保持一致
+        #application: seata-server  #与register.conf文件中的保持一致
+        group: DEFAULT_GROUP
         username: nacos
         password: nacos
         namespace: e039ecd9-d1bb-490b-bc32-e8a5459bd89c #默认public，此处是创建的seata工作区间
