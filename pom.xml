@@ -59,6 +59,8 @@
         <alibaba.cloud.version>2.2.6.RELEASE</alibaba.cloud.version>
     </properties>
 
+    <!--  个人学习提交博客地址 https://github.com/wwg1025/LearnCloud  -->
+
     <!-- 子模块继承之后，提供作用：
         锁定版本+子modlue不用写groupId和version -->
     <dependencyManagement>
